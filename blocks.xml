@@ -144,16 +144,6 @@
 		</fields>
 	</block>
 	
-	<block	tag="exit-game"
-		spec="exit game [i:desktop] [i:mobile]"
-		code="&#35;if (!flash &amp;&amp; !air) nme.Lib.exit(); &#35;end"
-		help="Exits the game. Works only on Desktop and Mobile."
-		type="action"
-		color="red"
-		returns="void">
-		<fields/>
-	</block>
-	
 	<block	tag="set-clipboard"
 		spec="set clipboard to %0 [i:flash]"
 		code="&#35;if (flash || air) flash.system.System.setClipboard(~); &#35;end"
