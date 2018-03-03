@@ -158,7 +158,7 @@
 
 	<block	tag="save-load-custom-game"
 		spec="%0 game with name %1 [e:dash] %3 [i:save]"
-		code="~Game(~, function(success:Bool){~});"
+		code="~Game(ExtraUtils.sanitizeGameName(~), function(success:Bool):Void&#xA;{&#xA;~&#xA;});"
 		help="Save/Load the game with a custom save name. The default name is 'mySave'."
 		type="wrapper"
 		color="red"

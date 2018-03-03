@@ -13,7 +13,33 @@ import box2D.dynamics.joints.B2Joint;
 // import com.stencyl.behavior.SceneScript;
 
 class ExtraUtils {
-	public static function equalsOr(thing:Dynamic, thing1:Dynamic, thing2:Dynamic) {
+	public static function sanitizeGameName(name:String):String {
+		var replacements:Map<String, String> = [
+			"$" => "$$",
+			"\n" => "$0A",
+			"\r" => "$0D",
+			" " => "$20",
+			"\"" => "$22",
+			"#" => "$23",
+			"%" => "$25",
+			"&" => "$26",
+			"'" => "$27",
+			"," => "$2C",
+			":" => "$3A",
+			";" => "$3B",
+			"<" => "$3C",
+			">" => "$3E",
+			"?" => "$3F",
+			"\\" => "$5C",
+			"~" => "$7E"
+		];
+		for (key in replacements.keys()) {
+			name = StringTools.replace(name, key, replacements[key]);
+		}
+		return name;
+	}
+	
+	public static function equalsOr(thing:Dynamic, thing1:Dynamic, thing2:Dynamic):Bool {
 		return thing == thing1 || thing == thing2;
 	}
 	

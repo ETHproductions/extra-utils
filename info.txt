@@ -2,5 +2,5 @@ name=Extra Utilities
 description=A bunch of handy blocks.
 author=ETHproductions
 website=http://community.stencyl.com/index.php/topic,35612.0.html
-version=2.0
+version=2.0.1
 compatibility=all
