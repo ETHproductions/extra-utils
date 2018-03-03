@@ -81,27 +81,17 @@
 		help="Completely empty text."
 		type="normal"
 		color="lime"
+		hidden="true"
 		returns="text">
-		<fields />
-	</block>
-
-	<block	tag="null"
-		spec="null"
-		code="null"
-		help="Literal 'null' value."
-		type="normal"
-		color="gray"
-		returns="anything">
 		<fields />
 	</block>
 
 	<block	tag="get-fps"
 		spec="update speed in ms"
 		code="Engine.STEP_SIZE"
-		help="Gets the update speed (in milliseconds) that the game engine is running at. Default is 10."
+		help="Gets the update speed (in milliseconds) of the game engine. Default is 10 ms."
 		type="normal"
 		color="gray"
-		hidden="true"
 		returns="number">
 		<fields />
 	</block>
@@ -109,10 +99,9 @@
 	<block	tag="set-fps"
 		spec="set update speed to %0 ms"
 		code="Engine.STEP_SIZE = Std.int(~);"
-		help="Sets the update speed (in milliseconds) of the game engine. The higher the number, the slower the game will be. Default is 10."
+		help="Sets the update speed (in milliseconds) of the game engine. The higher the number, the slower the game will be. Default is 10 ms."
 		type="action"
 		color="gray"
-		hidden="true"
 		returns="void">
 		<fields>
 			<number order="0"></number>
@@ -135,7 +124,7 @@
 	<block	tag="get-scene-value"
 		spec="get scene value %0"
 		code="getCamera().getActorValue(~)"
-		help="Gets the desired value into the scene's property list. NOT THE SAME AS ATTRIBUTES."
+		help="Gets the desired value from the scene's property list. NOT THE SAME AS ATTRIBUTES."
 		type="normal"
 		color="blue"
 		returns="anything">
@@ -170,7 +159,7 @@
 	<block	tag="save-load-custom-game"
 		spec="%0 game with name %1 [e:dash] %3 [i:save]"
 		code="~Game(~, function(success:Bool){~});"
-		help="Save/Load the game with a custom save name. The default name is 'mySave'. [i:save]"
+		help="Save/Load the game with a custom save name. The default name is 'mySave'."
 		type="wrapper"
 		color="red"
 		returns="void">
