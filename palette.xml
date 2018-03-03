@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<palette>
+	<category title="Extra Utils" color="lblue">
+
+		<section title="Extra Utils">
+
+			<header title="Stuff" />
+			<block tag="if-then-else" />
+			
+		</section>
+
+	</category>
+</palette>

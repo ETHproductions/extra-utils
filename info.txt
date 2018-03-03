@@ -1,0 +1,6 @@
+name=Extra Utilities 3.2
+description=A bunch of handy blocks.
+author=ETHproductions
+website=http://community.stencyl.com/index.php/topic,35612.0.html
+version=1.2
+compatibility=all

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<blocks>
+	<block	tag="if-then-else"
+		spec="if %0 then %1 else %2"
+		code="if (~) ~ else ~"
+		help="Returns one of the two inputs, depending on the boolean."
+		type="normal"
+		color="yellow"
+		returns="anything">
+		<fields>
+			<boolean order="0"/>
+			<anything order="1"/>
+			<anything order="2"/>
+		</fields>
+	</block>
+
+	<block	tag="equals-or"
+		spec="%0 = either %1 or %2"
+		code="ExtraUtils.equalsOr(~, ~, ~)"
+		help="Returns true if the first item is equal to either of the others."
+		type="normal"
+		color="lime"
+		returns="boolean">
+		<fields>
+			<anything order="0"/>
+			<anything order="1"/>
+			<anything order="2"/>
+		</fields>
+	</block>
+
+	<block	tag="anything-is-type"
+		spec="%0 is %1"
+		code="ExtraUtils.is(~, ~)"
+		help="Returns true if the item is of the specified type."
+		type="normal"
+		color="lime"
+		returns="boolean">
+		<fields>
+			<anything order="0"/>
+			<dropdown order="1">
+				<choices>
+					<c text="an actor" code="&quot;Actor&quot;" />
+					<c text="an actor group" code="&quot;Group&quot;" />
+					<c text="an actor type" code="&quot;Type&quot;" />
+					<c text="an animation" code="&quot;String&quot;" />
+					<c text="a boolean" code="&quot;Bool&quot;" />
+					<c text="a color" code="&quot;Int&quot;" />
+					<c text="a control" code="&quot;String&quot;" />
+					<c text="a font" code="&quot;Font&quot;" />
+					<c text="an image" code="&quot;BitmapData&quot;" />
+					<c text="an image inst" code="&quot;Bitmap&quot;" />
+					<c text="a list" code="&quot;Array&quot;" />
+					<c text="a joint" code="&quot;Joint&quot;" />
+					<c text="a map" code="&quot;Map&quot;" />
+					<c text="a number" code="&quot;Float&quot;" />
+					<c text="a region" code="&quot;Region&quot;" />
+					<c text="a scene" code="&quot;Scene&quot;" />
+					<c text="a sound" code="&quot;Sound&quot;" />
+					<c text="text" code="&quot;String&quot;" />
+				</choices>
+			</dropdown>
+		</fields>
+	</block>
+
+	<block	tag="as-int"
+		spec="%0 as int"
+		code="Std.int(~)"
+		help="Returns the number as an integer (whole number)."
+		type="normal"
+		color="lime"
+		returns="number">
+		<fields>
+			<number order="0"/>
+		</fields>
+	</block>
+
+	<block	tag="blank-text"
+		spec="blank text"
+		code="&quot;&quot;"
+		help="Completely empty text."
+		type="normal"
+		color="lime"
+		returns="text">
+		<fields />
+	</block>
+
+	<block	tag="null"
+		spec="null"
+		code="null"
+		help="Literal 'null' value."
+		type="normal"
+		color="gray"
+		returns="anything">
+		<fields />
+	</block>
+
+	<block	tag="get-fps"
+		spec="update speed in ms"
+		code="Engine.STEP_SIZE"
+		help="Gets the update speed (in milliseconds) that the game engine is running at. Default is 10."
+		type="normal"
+		color="gray"
+		hidden="true"
+		returns="number">
+		<fields />
+	</block>
+
+	<block	tag="set-fps"
+		spec="set update speed to %0 ms"
+		code="Engine.STEP_SIZE = Std.int(~);"
+		help="Sets the update speed (in milliseconds) of the game engine. The higher the number, the slower the game will be. Default is 10."
+		type="action"
+		color="gray"
+		hidden="true"
+		returns="void">
+		<fields>
+			<number order="0"></number>
+		</fields>
+	</block>
+	
+	<block	tag="set-scene-value"
+		spec="set scene value %0 to %1"
+		code="getCamera().setActorValue(~, ~);"
+		help="Puts the given value into the scene's property list. NOT THE SAME AS ATTRIBUTES."
+		type="action"
+		color="blue"
+		returns="void">
+		<fields>
+			<text order="0"/>
+			<anything order="1"/>
+		</fields>
+	</block>
+	
+	<block	tag="get-scene-value"
+		spec="get scene value %0"
+		code="getCamera().getActorValue(~)"
+		help="Gets the desired value into the scene's property list. NOT THE SAME AS ATTRIBUTES."
+		type="normal"
+		color="blue"
+		returns="anything">
+		<fields>
+			<text order="0"/>
+		</fields>
+	</block>
+	
+	<block	tag="exit-game"
+		spec="exit game [i:desktop] [i:mobile]"
+		code="&#35;if (!flash &amp;&amp; !air) nme.Lib.exit(); &#35;end"
+		help="Exits the game. Works only on Desktop and Mobile."
+		type="action"
+		color="red"
+		returns="void">
+		<fields/>
+	</block>
+	
+	<block	tag="set-clipboard"
+		spec="set clipboard to %0 [i:flash]"
+		code="&#35;if (flash || air) flash.system.System.setClipboard(~); &#35;end"
+		help="Sets the computer's clipboard (accessed with Ctrl+V). Works only on Flash."
+		type="action"
+		color="red"
+		returns="void">
+		<fields>
+			<text order="0"/>
+		</fields>
+	</block>
+
+	<block	tag="save-load-succeeded"
+		spec="save/load succeeded [e:tag-arrow]"
+		code="success"
+		help="Use inside the custom save/load game block."
+		hidden="true"
+		type="normal"
+		color="red"
+		returns="boolean">
+		<fields/>
+	</block>
+
+	<block	tag="save-load-custom-game"
+		spec="%0 game with name %1 [e:dash] %3 [i:save]"
+		code="~Game(~, function(success:Bool){~});"
+		help="Save/Load the game with a custom save name. The default name is 'mySave'. [i:save]"
+		type="wrapper"
+		color="red"
+		returns="void">
+		<fields>
+			<dropdown order="0">
+				<choices>
+					<c text="save" code="save"/>
+					<c text="load" code="load"/>
+				</choices>				
+			</dropdown>
+			<text order="1"/>
+			<CODE_BLOCK order="2"/>
+			<attached-block order="3" tag="save-load-succeeded"/>
+		</fields>
+	</block>
+	
+	<block	tag="double-loop-inner"
+		spec="current %0 count [e:tag-arrow]"
+		code="index~"
+		help="Use inside the 2d loop block."
+		hidden="true"
+		type="normal"
+		color="lime"
+		returns="number">
+		<fields>
+			<dropdown order="0">
+				<choices>
+					<c text="x" code="X"/>
+					<c text="y" code="Y"/>
+				</choices>				
+			</dropdown>
+		</fields>
+	</block>
+
+	<block	tag="double-loop"
+		spec="repeat ( x: %1 y: %0 ) times [e:dash] %3"
+		code="for (indexY in 0...Std.int(~)) { for (indexX in 0...Std.int(~)) {~}}"
+		help="Loops code the specified number of x/y times."
+		type="wrapper"
+		color="yellow"
+		returns="void">
+		<fields>
+			<number order="0"/>
+			<number order="1"/>
+			<CODE_BLOCK order="2"/>
+			<attached-block order="3" tag="double-loop-inner"/>
+		</fields>
+	</block>
+</blocks>
